@@ -1,12 +1,12 @@
 # Onboarding Hybrid Machines to Azure Arc-enabled Servers at scale with Ansible
 
-Ansible Playbooks support scalable and reusable configuration of multiple machines. A playbook is composed of one or more ‘plays’ in an ordered list. The terms ‘playbook’
-and ‘play’ are sports analogies. Each play executes part of the overall goal of the playbook, running one or more tasks. Each task calls an Ansible module.
+You can onboard your Ansible-managed machines to Azure Arc-enabled servers at scale by using an Ansible playbook. 
+
+Ansible Playbooks support scalable and reusable configuration of multiple machines. A playbook is composed of one or more ‘plays’ in an ordered list. The terms ‘playbook’ and ‘play’ are sports analogies. Each play executes part of the overall goal of the playbook, running one or more tasks. Each task calls an Ansible module.
 Learn more: https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html#playbook-execution
 
 When you execute Ansible through an ad hoc command or by running a playbook, you must choose which managed nodes or groups you want to execute against. Patterns let 
-you run commands and playbooks against specific hosts and/or groups in your inventory. An Ansible pattern can refer to a single host, an IP address, an inventory group, 
-a set of groups, or all hosts in your inventory. 
+you run commands and playbooks against specific hosts and/or groups in your inventory. An Ansible pattern can refer to a single host, an IP address, an inventory group, a set of groups, or all hosts in your inventory. 
 Learn more: https://docs.ansible.com/ansible/latest/user_guide/intro_patterns.html/ 
 
 ## Step 1: Create a Service Principal 
