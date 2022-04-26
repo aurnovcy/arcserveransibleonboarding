@@ -33,7 +33,7 @@ Modify the Ansible Playbook to include the following parameters as prompted:
 - Proxy (Optional)
 - Region 
 
-Additionally, modify the target servers from webservers to your desired subset of servers. You can also apply a pattern in defining the scope of target servers. 
+Additionally, define the target servers from webservers to your desired subset of servers. You can also apply a pattern in defining the scope of target servers. 
 
 ## Step 4: Run the Ansible Playbook
 
