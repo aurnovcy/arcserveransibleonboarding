@@ -1,5 +1,5 @@
     - name: Onboard Windows Server to Azure Arc-enabled servers with public endpoint
-      hosts: webservers
+      hosts: <INSERT-HOSTS>
       tasks: 
         - name: Download the Connected Machine Agent
           win_get_url:
