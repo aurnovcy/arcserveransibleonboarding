@@ -1,15 +1,16 @@
-    - name: Onboard Windows Server to Azure Arc-enabled servers with public endpoint
-      hosts: <INSERT-HOSTS>
-      tasks: 
-        - name: Download the Connected Machine Agent
-          win_get_url:
-          url: https://aka.ms/AzureConnectedMachineAgent
-          dest: C:\AzureConnectedMachineAgent.msi
-          when: ansible_os_family =='Windows'
-        - name: Install the Connected Machine Agent
-          win_package:
-          path: C:\AzureConnectedMachineAgent.msi
-          when: ansible_os_family =='Windows'
-        - name: Connect the Connected Machine Agent to Azure
-          win_shell: '$status=(azcmagent.exe show | findstr -i Disconnected); If ($Status -ne $null) { & $env:ProgramFiles\AzureConnectedMachineAgent\azcmagent.exe connect --service-principal-id "<INSERT SERVICE PRINCIPAL ID>"  --service-principal-secret "<INSERT SERVICE PRINCIPAL SECRET>" --resource-group "<INSERT RESOURCE GROUP NAME>" --tenant-id "<INSERT TENANT ID>" --location "<INSERT LOCATION>" --subscription-id "<INSERT SUBSCRIPTION ID" --tags <INSERT TAGS>  --correlation-id "d009f5dd-dba8-4ac7-bac9-b54ef3a6671a" }'
-          when: ansible_os_family =='Windows'
+---
+
+- name: Onboard Windows Server to Azure Arc-enabled servers with public endpoint
+  hosts: <INSERT-HOSTS>
+  tasks: 
+    - name: Download the Connected Machine Agent
+      win_get_url:
+        url: https://aka.ms/AzureConnectedMachineAgent
+        dest: C:\AzureConnectedMachineAgent.msi
+      when: ansible_os_family == 'Windows'
+    - name: Install the Connected Machine Agent
+        path: C:\AzureConnectedMachineAgent.msi
+      when: ansible_os_family == 'Windows'
+    - name: Connect the Connected Machine Agent to Azure
+        win_shell: '& $env:ProgramFiles\AzureConnectedMachineAgent\azcmagent.exe connect --service-principal-id "<INSERT SERVICE PRINCIPAL CLIENT ID>"  --service-principal-secret "<INSERT SERVICE PRINCIPAL SECRET>" --resource-group "<INSERT RESOURCE GROUP NAME>" --tenant-id "<INSERT TENANT ID>" --location "<INSERT LOCATION>" --subscription-id "<INSERT SUBSCRIPTION ID"'
+      when: ansible_os_family == 'Windows'
