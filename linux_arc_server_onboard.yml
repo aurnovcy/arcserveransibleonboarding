@@ -1,6 +1,6 @@
 ---
 - name: Onboard Linux Server to Azure Arc-enabled servers with public endpoint
-  hosts: <INSERT-HOSTS-NAME>
+  hosts: <INSERT-HOSTS>
   tasks:
       - name: Download the Connected Machine Agent 
         become: yes
