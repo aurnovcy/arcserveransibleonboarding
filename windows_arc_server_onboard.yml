@@ -1,5 +1,4 @@
 ---
-
 - name: Onboard Windows Server to Azure Arc-enabled servers with public endpoint
   hosts: <INSERT-HOSTS>
   tasks: 
