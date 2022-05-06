@@ -1,6 +1,6 @@
 ---
 - name: Onboard Linux Server to Azure Arc-enabled servers with public endpoint
-  hosts: webservers
+  hosts: <INSERT-HOSTS-NAME>
   tasks:
       - name: Download the Connected Machine Agent 
         become: yes
@@ -8,12 +8,12 @@
           url: https://aka.ms/azcmagent
           dest: ~/install_linux_azcmagent.sh
           mode: '700'
-        when: ansible_system =='Linux'
+        when: ansible_system == 'Linux'
       - name: Install the Connected Machine Agent
         become: yes
-        shell: azcmagent -v >/dev/null 2>&1 || ~/install_linux_azcmagent.sh
-        when: ansible_system =='Linux'
+        shell: bash ~/install_linux_azcmagent.sh
+        when: ansible_system == 'Linux'
       - name: Connect the Connected Machine Agent to Azure
         become: yes
-        shell: azcmagent show | grep -q -i "Disconnected" && azcmagent connect --service-principal-id <INSERT-SERVICE-PRINCIPAL>  --service-principal-secret <INSERT-SERVICE-PRINCIPAL-SECRET> --resource-group <INSERT-RESOURCE-GROUP> --tenant-id <INSERT-TENANT-ID> --location <INSERT-REGION> --subscription-id <INSERT-SUBSCRIPTION-ID> --tags <INSERT-TAGS> --correlation-id 'd009f5dd-dba8-4ac7-bac9-b54ef3a6671a' || echo 'Machine already connected'
+        shell: sudo azcmagent connect --service-principal-id <INSERT-SERVICE-PRINCIPAL-ID> --service-principal-secret <INSERT-SERVICE-PRINCIPAL-SECRET> --resource-group <INSERT-RESOURCE-GROUP> --tenant-id <INSERT-TENANT-ID> --location <INSERT-REGION> --subscription-id <INSERT-SUBSCRIPTION-ID> --correlation-id 'd009f5dd-dba8-4ac7-bac9-b54ef3a6671a'
         when: ansible_system == 'Linux'
