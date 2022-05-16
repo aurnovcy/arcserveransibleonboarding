@@ -16,7 +16,7 @@ Learn more: https://docs.microsoft.com/en-us/azure/azure-arc/servers/onboard-ser
 
 ## Step 2: Download the Ansible Playbook
 
-Download the correct Ansible Playbook for your environment and needs. We provide four playbooks for both Windows and Linux and for both public endpoint and proxy server connectivity methods. 
+Download the correct Ansible Playbook for your environment and needs. We provide six playbooks for both Windows and Linux and for both public endpoint, private link scope, and proxy server connectivity methods. 
 
 Save the Ansible Playbook as 'arc-server-onboard-playbook.yml'. 
 
