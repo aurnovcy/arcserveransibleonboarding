@@ -3,7 +3,7 @@
   hosts: <INSERT-HOSTS>
   tasks:
       - name: Download the Connected Machine Agent on Windows servers
-	win_get_url:
+        win_get_url:
 	  url: https://aka.ms/AzureConnectedMachineAgent
           dest: C:\AzureConnectedMachineAgent.msi
         when: ansible_os_family == 'Windows'
