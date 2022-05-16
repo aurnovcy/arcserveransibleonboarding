@@ -1,15 +1,15 @@
 ---
-- name: Onboard Windows Server to Azure Arc-enabled servers with public endpoint
+- name: Onboard Windows Servers to Azure Arc-enabled servers with public endpoint connectivity
   hosts: <INSERT-HOSTS>
-  tasks: 
-    - name: Download the Connected Machine Agent
-      win_get_url:
-        url: https://aka.ms/AzureConnectedMachineAgent
-        dest: C:\AzureConnectedMachineAgent.msi
-      when: ansible_os_family == 'Windows'
-    - name: Install the Connected Machine Agent
+  tasks:
+    	- name: Download the Connected Machine Agent on Windows servers
+	      win_get_url:
+        	url: https://aka.ms/AzureConnectedMachineAgent
+        	dest: C:\AzureConnectedMachineAgent.msi
+        when: ansible_os_family == 'Windows'
+      - name: Install the Connected Machine Agent on Windows servers
         path: C:\AzureConnectedMachineAgent.msi
-      when: ansible_os_family == 'Windows'
-    - name: Connect the Connected Machine Agent to Azure
-        win_shell: '& $env:ProgramFiles\AzureConnectedMachineAgent\azcmagent.exe connect --service-principal-id "<INSERT SERVICE PRINCIPAL CLIENT ID>"  --service-principal-secret "<INSERT SERVICE PRINCIPAL SECRET>" --resource-group "<INSERT RESOURCE GROUP NAME>" --tenant-id "<INSERT TENANT ID>" --location "<INSERT LOCATION>" --subscription-id "<INSERT SUBSCRIPTION ID"'
-      when: ansible_os_family == 'Windows'
+        when: ansible_os_family == 'Windows'
+      - name: Connect the Connected Machine Agent on Windows servers to Azure
+        win_shell: '& $env:ProgramFiles\AzureConnectedMachineAgent\azcmagent.exe connect --service-principal-id <INSERT-SERVICE-PRINCIPAL-CLIENT-ID> --service-principal-secret <INSERT-SERVICE-PRINCIPAL-SECRET> --resource-group <INSERT-RESOURCE-GROUP> --tenant-id <INSERT-TENANT-ID> --location <INSERT-REGION> --subscription-id <INSERT-SUBSCRIPTION-ID>'
+        when: ansible_os_family == 'Windows'
