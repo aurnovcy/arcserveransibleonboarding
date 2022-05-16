@@ -1,5 +1,5 @@
 ---
-- name: Onboard Linux and Windows Servers to Azure Arc-enabled servers with public endpoint connectivity
+- name: Onboard Windows Servers to Azure Arc-enabled servers with public endpoint connectivity
   hosts: <INSERT-HOSTS>
   tasks:
       - name: Download the Connected Machine Agent on Windows servers
